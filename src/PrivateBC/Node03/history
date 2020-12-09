@@ -14,3 +14,14 @@ eth.getBlock(20)
 eth.blockNumber
 eth.getBlock(25)
 miner.stop()
+eth.NodeInfo
+admin.nodeInfo
+eth.accounts
+eth.blockNumber
+eth.pendingTransactions
+miner.start(1)
+eth.pendingTransactions
+miner.stop()
+exit()
+eth.blockNumber
+exit()
