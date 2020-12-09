@@ -1,0 +1,8 @@
+clear
+clc
+admin.nodeInfo
+admin.addPeer("enode://88ccee3d662732e53832a168722f22a9e736e463927ff07af0218a2c7ecb8631b3e2a267ace61b87f0c72aa33107b178a686931bef247405c5299238eadc1ab1@127.0.0.1:30301?discport=0")
+eth.blockNumber
+admin.peers
+admin.nodeInfo
+eth.blockNumber

@@ -1,0 +1,16 @@
+admin.addPeer("enode://08e69df5aa7a6517dcf22a2a0ac3973726dd6d2de341111ba2f43d8ae7ec2c328838401a8b050d7038ad823e6e62702763c9b8eb525751d8f47c9176f1ac4fa3@127.0.0.1:30302?discport=0")
+admin.Pe
+admin.Peers
+admin.peers
+eth.blockNumber
+miner.stop()
+eth.accounts
+eth.blockNumber
+miner.start(1)
+eth.blockNumber
+eth.getBlock(5)
+eth.getBlock(15)
+eth.getBlock(20)
+eth.blockNumber
+eth.getBlock(25)
+miner.stop()
