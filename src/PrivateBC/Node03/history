@@ -25,3 +25,14 @@ miner.stop()
 exit()
 eth.blockNumber
 exit()
+eth.accounts
+miner.stop
+miner.stop()
+miner.start(1)
+eth.pendingTransactions
+eth.blockNumber
+eth.pendingTransactions
+eth.blockNumber
+miner.stop
+miner.stop()
+exit()
