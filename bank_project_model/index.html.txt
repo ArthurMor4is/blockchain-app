@@ -1,19 +1,11 @@
 <html>
     <body>
         <div>
-			<p>bAirBnb</p>
+			<p>Bank DApp</p>
 			<input type="text" id="amount">
   			<p>Balance: <a id='balance'></a></p>
-  			
-  			<!-- <button id='deposit'>Deposit</button>
-  			<button id='withdraw'>Withdraw</button> -->
-
-  			<button id='rentAFlat'>rentAFlat</button>
-  			<button id='setFlatAvailability'>setFlatAvailability</button>
-  			<button id='setPriceOfFlat'>setPriceOfFlat</button>
-  			<button id='getCurrentOccupant'>getCurrentOccupant</button>
-  			<button id='getFlatAvailability'>getFlatAvailability</button>
-
+  			<button id='deposit'>Deposit</button>
+  			<button id='withdraw'>Withdraw</button>
   			<p>Account Connected: <a id='coinbase'></a></p>
 			<p>Actual Block Number: <a id='blockNumber'></a></p>
 			<p>Contract Address: <a id='address'></a></p>
@@ -55,144 +47,61 @@
 
 				/////////////////////////////
 				// Sample of a contract's address deployed in Ropsten test network
-				 var address = "0xd443734C514A47F0a7CB0a4Da577Ba1a80326792"
+				 var address = "0xeD08acB1e362000a8987933D566b5Dc59f29C844"
 				// Deployed Contract's Adress, substitute here with your contract's address
 				// var address = "0xB40dCa2c4b6B84C1131eBDdCf3df6D2f294B0ba8"
 				$('#address').html(address)
 				// Deployed Contract's ABI
-				var abi = 
-						[
-							{
-								"constant": false,
-								"inputs": [
-									{
-										"internalType": "uint8",
-										"name": "_flat",
-										"type": "uint8"
-									}
-								],
-								"name": "rentAFlat",
-								"outputs": [
-									{
-										"internalType": "uint256",
-										"name": "",
-										"type": "uint256"
-									}
-								],
-								"payable": true,
-								"stateMutability": "payable",
-								"type": "function"
-							},
-							{
-								"constant": false,
-								"inputs": [
-									{
-										"internalType": "uint8",
-										"name": "_flat",
-										"type": "uint8"
-									},
-									{
-										"internalType": "bool",
-										"name": "_newAvailability",
-										"type": "bool"
-									}
-								],
-								"name": "setFlatAvailability",
-								"outputs": [],
-								"payable": false,
-								"stateMutability": "nonpayable",
-								"type": "function"
-							},
-							{
-								"constant": false,
-								"inputs": [
-									{
-										"internalType": "uint8",
-										"name": "_flat",
-										"type": "uint8"
-									},
-									{
-										"internalType": "uint256",
-										"name": "_priceInWei",
-										"type": "uint256"
-									}
-								],
-								"name": "setPriceOfFlat",
-								"outputs": [],
-								"payable": false,
-								"stateMutability": "nonpayable",
-								"type": "function"
-							},
-							{
-								"inputs": [],
-								"payable": false,
-								"stateMutability": "nonpayable",
-								"type": "constructor"
-							},
-							{
-								"constant": true,
-								"inputs": [
-									{
-										"internalType": "uint256",
-										"name": "_flat",
-										"type": "uint256"
-									}
-								],
-								"name": "getCurrentOccupant",
-								"outputs": [
-									{
-										"internalType": "address",
-										"name": "",
-										"type": "address"
-									}
-								],
-								"payable": false,
-								"stateMutability": "view",
-								"type": "function"
-							},
-							{
-								"constant": true,
-								"inputs": [
-									{
-										"internalType": "uint256",
-										"name": "_flat",
-										"type": "uint256"
-									}
-								],
-								"name": "getFlatAvailability",
-								"outputs": [
-									{
-										"internalType": "bool",
-										"name": "",
-										"type": "bool"
-									}
-								],
-								"payable": false,
-								"stateMutability": "view",
-								"type": "function"
-							},
-							{
-								"constant": true,
-								"inputs": [
-									{
-										"internalType": "uint256",
-										"name": "_flat",
-										"type": "uint256"
-									}
-								],
-								"name": "getPriceOfFlat",
-								"outputs": [
-									{
-										"internalType": "uint256",
-										"name": "",
-										"type": "uint256"
-									}
-								],
-								"payable": false,
-								"stateMutability": "view",
-								"type": "function"
-							}
-						];
+				var abi = [
+						{
+							"constant": false,
+							"inputs": [
+								{
+									"name": "amt",
+									"type": "int256"
+								}
+							],
+							"name": "deposit",
+							"outputs": [],
+							"payable": false,
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"constant": false,
+							"inputs": [
+								{
+									"name": "amt",
+									"type": "int256"
+								}
+							],
+							"name": "withdraw",
+							"outputs": [],
+							"payable": false,
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"payable": false,
+							"stateMutability": "nonpayable",
+							"type": "constructor"
+						},
+						{
+							"constant": true,
+							"inputs": [],
+							"name": "getBalance",
+							"outputs": [
+								{
+									"name": "",
+									"type": "int256"
+								}
+							],
+							"payable": false,
+							"stateMutability": "view",
+							"type": "function"
+						}
+					];
 				
 				// connect, via web3, your variable contract to the deployed contract, using his ABI and address	
 				contract = new web3.eth.Contract(abi, address);

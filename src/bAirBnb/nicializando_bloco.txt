@@ -1,1 +1,0 @@
-geth --networkid 1234 --datadir './Node03/' --nodiscover --rpc --rpcport '8545' --port '30304' --rpccorsdomain * --nat 'any' --rpcapi eth,web3,personal,net --allow-insecure-unlock console 2>>./Node03/geth.log
