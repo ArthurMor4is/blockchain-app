@@ -1,4 +1,23 @@
 <html>
+	<head>
+		<style>
+		table {
+		  font-family: arial, sans-serif;
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+
+		td, th {
+		  border: 1px solid #dddddd;
+		  text-align: left;
+		  padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		  background-color: #dddddd;
+		}
+		</style>
+	</head>
     <body>
         <div>
 			<p>bAirBnb</p>
@@ -18,10 +37,64 @@
 			<input type="text" id="FlatId_set" placeholder="Flat Number">
 			<input type="text" id="NewFlatAvailability" placeholder="New Availability (bool)">
   			<button id='setFlatAvailability'>setFlatAvailability</button>
+  			<br> 
+			<br>
+
+  			<button id='FlatAtualization'>Atualization</button> 
 
   			<p>Account Connected: <a id='coinbase'></a></p>
 			<p>Actual Block Number: <a id='blockNumber'></a></p>
 			<p>Contract Address: <a id='address'></a></p>
+
+			<h2>Flat State</h2>
+
+			<table id="myTable">
+			  <tr>
+			    <th>Flat_id</th>
+			    <th>Availability</th>
+			    <!-- <th>Price</th> -->
+			  </tr>
+			  <!-- <tr>
+			    <td>1</td>
+			    <td>-</td>
+			    <td>-</td>
+			  </tr>
+			  <tr>
+			    <td>2</td>
+			    <td>-</td>
+			    <td>-</td>
+			  </tr>
+			  <tr>
+			    <td>3</td>
+			    <td>-</td>
+			    <td>-</td>
+			  </tr>
+			  <tr>
+			    <td>4</td>
+			    <td>-</td>
+			    <td>-</td>
+			  </tr>
+			  <tr>
+			    <td>5</td>
+			    <td>-</td>
+			    <td>-</td>
+			  </tr>
+			  <tr>
+			    <td>6</td>
+			    <td>-</td>
+			    <td>-</td>
+			  </tr>
+			  <tr>
+			    <td>7</td>
+			    <td>-</td>
+			    <td>-</td>
+			  </tr>
+			  <tr>
+			    <td>8</td>
+			    <td>-</td>
+			    <td>-</td>
+			  </tr> -->
+			</table>
 	    </div>
 		
 		<!-- To use web3, jquery and materialize (for toast warnings) libs -->
@@ -30,7 +103,10 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
         <script>
+			
 			var contract;
+			var myTable = document.getElementById('myTable');							
+            
             $(document).ready(function(){
 				// making conection with blockchain
 				if (typeof web3 !== 'undefined') {
@@ -202,7 +278,73 @@
 				// connect, via web3, your variable contract to the deployed contract, using his ABI and address	
 				contract = new web3.eth.Contract(abi, address);
 			})
+
+			jQuery(function($) {
+
+				// Atualizando tabela
+					web3.eth.getAccounts().then(
+						function(accounts)
+						{
+							var acc = accounts[0];
+							for (var i = 0; i < 8; i++) {
+								console.log('oi')
+								contract.methods.getFlatAvailability(i).call().then(
+									function(result)
+									{
+										console.log(result);
+										if (result) 
+										{
+											$('#myTable').append('<tr> <td></td> <td>Available</td> </tr>');	
+											// myTable.rows[FlatId].cells[1].innerHTML += "Available";
+										}
+										else 
+										{
+											$('#myTable').append('<tr> <td></td> <td>Not Available</td> </tr>');	
+										}
+									}
+								)
+							}
+						}
+					)
+
+			    // // select the table body and append a new row
+			    // for (var i = 1; i <= 2; i++) {
+			    // 	$('#myTable').append('<tr><td>ABC</td></tr>');	
+			    // }
+			});
+
+			// $('#FlatAtualization').click(
+			// 	function()
+			// 	{
+			// 		// Atualizando tabela
+			// 		web3.eth.getAccounts().then(
+			// 			function(accounts)
+			// 			{
+			// 				var acc = accounts[0];
+			// 				for (var FlatId = 1; FlatId <= 3; FlatId++) {
+			// 					console.log('oi')
+			// 					contract.methods.getFlatAvailability(FlatId).call().then(
+			// 						function(result)
+			// 						{
+			// 							console.log(result);
+			// 							if (result) 
+			// 							{
+			// 								myTable.rows[FlatId].cells[1].innerHTML += "Available";
+			// 							}
+			// 							else 
+			// 							{
+			// 								myTable.rows[FlatId].cells[1].innerHTML += "Not Available";
+			// 							}
+			// 						}
+			// 					)
+			// 				}
+			// 			}
+			// 		)
+			// 	}
+			// )
 			
+			
+
 			// Pesquisar disponibilidade de um flat
 			$('#getFlatAvailability').click(
 				function()
@@ -254,6 +396,11 @@
 					}).then(function(tx)
 						{
 							console.log(tx);
+							if (NewFlatAvailability){
+								myTable.rows[FlatId_set].cells[1].innerHTML = "Available";
+							} else {
+								myTable.rows[FlatId_set].cells[1].innerHTML = "Not Available";
+							}
 						}
 					)
 				}
