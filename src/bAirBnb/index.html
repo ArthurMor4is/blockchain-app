@@ -34,10 +34,69 @@
   			<!-- <button id='rentAFlat'>rentAFlat</button> -->
   			<!-- <button id='setPriceOfFlat'>setPriceOfFlat</button> -->
   			<!-- <button id='getCurrentOccupant'>getCurrentOccupant</button> -->
-			<input type="text" id="FlatId_set" placeholder="Flat Number">
-			<input type="text" id="NewFlatAvailability" placeholder="New Availability (bool)">
-  			<button id='setFlatAvailability'>setFlatAvailability</button>
+			<select id="FlatId_set">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+			</select>
+				<select id="NewFlatAvailability">
+				<option value="true">Disponível</option>
+				<option value="false">Alugar</option>
+			</select>
+				<button id='setFlatAvailability'>setFlatAvailability</button>
+			
+			<br>
+			<br>
+			<select id="FlatId_set_price">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+			</select>
+			<input type="number" id="New_Price" placeholder="Price">
+				<button id='setFlatPrice'>setFlatPrice</button>
+			<!--input type="text" id="FlatId_set" placeholder="Flat Number" -->
+			<!--input type="text" id="NewFlatAvailability" placeholder="New Availability (bool)" -->						
+  		
   			<br> 
+			<br> 
+				<select id="FlatId_get">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+			</select>
+			
+			<button id='getFlatAvailability'>getFlatAvailability</button> 
+			<a id='Availability'></a>
+			<br>
+			<br>
+			<select id="FlatId_get_price">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+			</select>
+			
+				<button id='getFlatPrice'>getFlatPrice</button> 
+			<a id='Price'></a>
 			<br>
 
   			<p>Account Connected: <a id='coinbase'></a></p>
@@ -84,9 +143,12 @@
 				// web3.eth.isMining().then(console.log);
 
 				// Create variables to use on html page
-				web3.eth.getCoinbase().then(function(coinbase){
-					$('#coinbase').html(coinbase);
-				})
+				
+				
+				
+			    web3.eth.getCoinbase().then(function(coinbase){
+				$('#coinbase').html(coinbase);
+				});
 
 				// Create variables to use on html page
 				web3.eth.getBlockNumber().then(function(blockNumber){
