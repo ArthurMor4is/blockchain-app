@@ -21,11 +21,11 @@
     <body>
         <div>
 			<p>bAirBnb</p>
-			<input type="text" id="FlatId_get" placeholder="Flat Number">
-			<button id='getFlatAvailability'>getFlatAvailability</button> 
-			<a id='Availability'></a>
-			<br> 
-			<br>
+			<!-- <input type="text" id="FlatId_get" placeholder="Flat Number"> -->
+			<!-- <button id='getFlatAvailability'>getFlatAvailability</button>  -->
+			<!-- <a id='Availability'></a> -->
+			<!-- <br>  -->
+			<!-- <br> -->
   			<!-- <p>Balance: <a id='balance'></a></p> -->
   			
   			<!-- <button id='deposit'>Deposit</button>
@@ -52,6 +52,7 @@
 			    <th>Availability</th>
 			    <th>Rating</th>
 			    <th>Price</th>
+			    <th>Occupant Address</th>
 			  </tr>
 			</table>
 	    </div>
@@ -285,13 +286,20 @@
 							var av;
 							var rt;
 							var pr;
+							var occ;
 							var aux;
 							for (var i = 0; i < 8; i++) {
-								// $('#myTable').append("<tr>");
 								contract.methods.getFlatAvailability(i).call().then(
 									function(availability)
 									{
 										av = availability;
+									}
+								)
+
+								contract.methods.getCurrentOccupant(i).call().then(
+									function(occupant)
+									{
+										occ = occupant;
 									}
 								)
 
@@ -307,7 +315,7 @@
 									{
 										rt = rating;
 
-										$('#myTable').append("<tr>  <td>"+ av +"</td> <td>" + rt + "</td> <td>" + pr + "</td> </tr>");
+										$('#myTable').append("<tr>  <td>"+ av +"</td> <td>" + rt + "</td> <td>" + pr + "</td> <td>" + occ + "</td> </tr>");
 									}
 								)
 							}
