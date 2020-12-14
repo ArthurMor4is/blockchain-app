@@ -40,8 +40,6 @@
   			<br> 
 			<br>
 
-  			<button id='FlatAtualization'>Atualization</button> 
-
   			<p>Account Connected: <a id='coinbase'></a></p>
 			<p>Actual Block Number: <a id='blockNumber'></a></p>
 			<p>Contract Address: <a id='address'></a></p>
@@ -50,50 +48,11 @@
 
 			<table id="myTable">
 			  <tr>
-			    <th>Flat_id</th>
+			    <!-- <th>Flat_id</th> -->
 			    <th>Availability</th>
-			    <!-- <th>Price</th> -->
+			    <th>Rating</th>
+			    <th>Price</th>
 			  </tr>
-			  <!-- <tr>
-			    <td>1</td>
-			    <td>-</td>
-			    <td>-</td>
-			  </tr>
-			  <tr>
-			    <td>2</td>
-			    <td>-</td>
-			    <td>-</td>
-			  </tr>
-			  <tr>
-			    <td>3</td>
-			    <td>-</td>
-			    <td>-</td>
-			  </tr>
-			  <tr>
-			    <td>4</td>
-			    <td>-</td>
-			    <td>-</td>
-			  </tr>
-			  <tr>
-			    <td>5</td>
-			    <td>-</td>
-			    <td>-</td>
-			  </tr>
-			  <tr>
-			    <td>6</td>
-			    <td>-</td>
-			    <td>-</td>
-			  </tr>
-			  <tr>
-			    <td>7</td>
-			    <td>-</td>
-			    <td>-</td>
-			  </tr>
-			  <tr>
-			    <td>8</td>
-			    <td>-</td>
-			    <td>-</td>
-			  </tr> -->
 			</table>
 	    </div>
 		
@@ -105,8 +64,7 @@
         <script>
 			
 			var contract;
-			var myTable = document.getElementById('myTable');							
-            
+			var myTable = document.getElementById('myTable');            
             $(document).ready(function(){
 				// making conection with blockchain
 				if (typeof web3 !== 'undefined') {
@@ -136,215 +94,227 @@
 
 				/////////////////////////////
 				// Sample of a contract's address deployed in Ropsten test network
-				 var address = "0xeAFF4d863A7812B196a849A1DC639A4035BE2544"
+				var address = "0xDFa927F6bB08395953C11972a740960e0Dd1884e"
 				// Deployed Contract's Adress, substitute here with your contract's address
 				// var address = "0xB40dCa2c4b6B84C1131eBDdCf3df6D2f294B0ba8"
 				$('#address').html(address)
 				// Deployed Contract's ABI
 				var abi = 
 						[
-							{
-								"constant": false,
-								"inputs": [
-									{
-										"internalType": "uint8",
-										"name": "_flat",
-										"type": "uint8"
-									}
-								],
-								"name": "rentAFlat",
-								"outputs": [
-									{
-										"internalType": "uint256",
-										"name": "",
-										"type": "uint256"
-									}
-								],
-								"payable": true,
-								"stateMutability": "payable",
-								"type": "function"
-							},
-							{
-								"constant": false,
-								"inputs": [
-									{
-										"internalType": "uint8",
-										"name": "_flat",
-										"type": "uint8"
-									},
-									{
-										"internalType": "bool",
-										"name": "_newAvailability",
-										"type": "bool"
-									}
-								],
-								"name": "setFlatAvailability",
-								"outputs": [],
-								"payable": false,
-								"stateMutability": "nonpayable",
-								"type": "function"
-							},
-							{
-								"constant": false,
-								"inputs": [
-									{
-										"internalType": "uint8",
-										"name": "_flat",
-										"type": "uint8"
-									},
-									{
-										"internalType": "uint256",
-										"name": "_priceInWei",
-										"type": "uint256"
-									}
-								],
-								"name": "setPriceOfFlat",
-								"outputs": [],
-								"payable": false,
-								"stateMutability": "nonpayable",
-								"type": "function"
-							},
-							{
-								"inputs": [],
-								"payable": false,
-								"stateMutability": "nonpayable",
-								"type": "constructor"
-							},
-							{
-								"constant": true,
-								"inputs": [
-									{
-										"internalType": "uint256",
-										"name": "_flat",
-										"type": "uint256"
-									}
-								],
-								"name": "getCurrentOccupant",
-								"outputs": [
-									{
-										"internalType": "address",
-										"name": "",
-										"type": "address"
-									}
-								],
-								"payable": false,
-								"stateMutability": "view",
-								"type": "function"
-							},
-							{
-								"constant": true,
-								"inputs": [
-									{
-										"internalType": "uint256",
-										"name": "_flat",
-										"type": "uint256"
-									}
-								],
-								"name": "getFlatAvailability",
-								"outputs": [
-									{
-										"internalType": "bool",
-										"name": "",
-										"type": "bool"
-									}
-								],
-								"payable": false,
-								"stateMutability": "view",
-								"type": "function"
-							},
-							{
-								"constant": true,
-								"inputs": [
-									{
-										"internalType": "uint256",
-										"name": "_flat",
-										"type": "uint256"
-									}
-								],
-								"name": "getPriceOfFlat",
-								"outputs": [
-									{
-										"internalType": "uint256",
-										"name": "",
-										"type": "uint256"
-									}
-								],
-								"payable": false,
-								"stateMutability": "view",
-								"type": "function"
-							}
-						];
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "_flat",
+				"type": "uint8"
+			}
+		],
+		"name": "rentAFlat",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "_flat",
+				"type": "uint8"
+			},
+			{
+				"internalType": "bool",
+				"name": "_newAvailability",
+				"type": "bool"
+			}
+		],
+		"name": "setFlatAvailability",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "_flat",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_priceInWei",
+				"type": "uint256"
+			}
+		],
+		"name": "setPriceOfFlat",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "_flat",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_rating",
+				"type": "uint256"
+			}
+		],
+		"name": "setRatingOfFlat",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_flat",
+				"type": "uint256"
+			}
+		],
+		"name": "getCurrentOccupant",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_flat",
+				"type": "uint256"
+			}
+		],
+		"name": "getFlatAvailability",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_flat",
+				"type": "uint256"
+			}
+		],
+		"name": "getPriceOfFlat",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_flat",
+				"type": "uint256"
+			}
+		],
+		"name": "getRatingOfFlat",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
 				
 				// connect, via web3, your variable contract to the deployed contract, using his ABI and address	
 				contract = new web3.eth.Contract(abi, address);
-			})
-
-			jQuery(function($) {
-
+				jQuery(function($) {
 				// Atualizando tabela
 					web3.eth.getAccounts().then(
 						function(accounts)
 						{
 							var acc = accounts[0];
+							var av;
+							var rt;
+							var pr;
+							var aux;
 							for (var i = 0; i < 8; i++) {
-								console.log('oi')
+								// $('#myTable').append("<tr>");
 								contract.methods.getFlatAvailability(i).call().then(
-									function(result)
+									function(availability)
 									{
-										console.log(result);
-										if (result) 
-										{
+										av = availability;
+									}
+								)
 
-											$('#myTable').append('<tr> <td></td> <td>Available</td> </tr>');	
-											// myTable.rows[FlatId].cells[1].innerHTML += "Available";
-										}
-										else 
-										{
-											$('#myTable').append('<tr> <td></td> <td>Not Available</td> </tr>');	
-										}
+								contract.methods.getPriceOfFlat(i).call().then(
+									function(price)
+									{
+										pr = price;
+									}
+								)
+
+								contract.methods.getRatingOfFlat(i).call().then(
+									function(rating)
+									{
+										rt = rating;
+
+										$('#myTable').append("<tr>  <td>"+ av +"</td> <td>" + rt + "</td> <td>" + pr + "</td> </tr>");
 									}
 								)
 							}
 						}
 					)
-
-			    // // select the table body and append a new row
-			    // for (var i = 1; i <= 2; i++) {
-			    // 	$('#myTable').append('<tr><td>ABC</td></tr>');	
-			    // }
-			});
-
-			// $('#FlatAtualization').click(
-			// 	function()
-			// 	{
-			// 		// Atualizando tabela
-			// 		web3.eth.getAccounts().then(
-			// 			function(accounts)
-			// 			{
-			// 				var acc = accounts[0];
-			// 				for (var FlatId = 1; FlatId <= 3; FlatId++) {
-			// 					console.log('oi')
-			// 					contract.methods.getFlatAvailability(FlatId).call().then(
-			// 						function(result)
-			// 						{
-			// 							console.log(result);
-			// 							if (result) 
-			// 							{
-			// 								myTable.rows[FlatId].cells[1].innerHTML += "Available";
-			// 							}
-			// 							else 
-			// 							{
-			// 								myTable.rows[FlatId].cells[1].innerHTML += "Not Available";
-			// 							}
-			// 						}
-			// 					)
-			// 				}
-			// 			}
-			// 		)
-			// 	}
-			// )
-			
-			
+				});	
+			})			
 
 			// Pesquisar disponibilidade de um flat
 			$('#getFlatAvailability').click(
@@ -393,8 +363,11 @@
 					{
 						var acc = accounts[0];
 						console.log(NewFlatAvailability)
+						console.log(acc)
 						return contract.methods.setFlatAvailability(FlatId_set, NewFlatAvailability).send({from: acc});
-					}).then(function(tx)
+					}
+					)
+					.then(function(tx)
 						{
 							console.log(tx);
 							if (NewFlatAvailability){
